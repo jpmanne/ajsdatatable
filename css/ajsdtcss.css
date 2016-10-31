@@ -6,15 +6,25 @@ table {
 	border-collapse: collapse;
 }
 
+tr:nth-child(even) {
+	background: #dae5f4;
+}
+
+tr:nth-child(odd) {
+	background: #FFF;
+}
+
 td {
-	border: 1px solid black;
+	border:#4e95f4 0.5px solid;
 	padding: 5px;
 }
+
 th {
-	border: 1px solid black;
+	border: 0.5px solid #4e95f4;
 	padding: 5px;
 	text-align: left;
 	cursor: pointer;
+	background: #b8d1f3;
 }
 
 .arrow_up {
