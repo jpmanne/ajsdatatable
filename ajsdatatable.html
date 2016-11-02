@@ -5,6 +5,7 @@
 	<script src="js/angular.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/ajsdtcontroller.js"></script>
+	<script type="text/javascript" src="js/ajsdtfilter.js"></script>
 </head>
 <body ng-controller="ajsDTController">
 	Search: <input type="text" placeholder="search" ng-model="searchText">
@@ -13,27 +14,63 @@
 	<table>
 		<thead>
 			<tr>
+				<th ng-click="sortData('id')">Id
+					<div ng-class="getSortClass('id')"></div>
+				</th>
+				<th ng-click="sortData('username')">Username
+					<div ng-class="getSortClass('username')"></div>
+				</th>
 				<th ng-click="sortData('name')">Name
 					<div ng-class="getSortClass('name')"></div>
 				</th>
-				<th ng-click="sortData('gender')">Gender
-					<div ng-class="getSortClass('gender')"></div>
+				<th ng-click="sortData('email')">Email
+					<div ng-class="getSortClass('email')"></div>
 				</th>
-				<th ng-click="sortData('dateOfBirth')">Date of Birth
-					<div ng-class="getSortClass('dateOfBirth')"></div>
+				<th ng-click="sortData('phone')">Phone
+					<div ng-class="getSortClass('phone')"></div>
 				</th>
-				<th ng-click="sortData('salary')">Salary
-					<div ng-class="getSortClass('salary')"></div>
+				<th ng-click="sortData('address.street')">Address : Street
+					<div ng-class="getSortClass('address.street')"></div>
+				</th>
+				<th ng-click="sortData('address.suite')">Address : Suite
+					<div ng-class="getSortClass('address.suite')"></div>
+				</th>
+				<th ng-click="sortData('address.city')">Address : City
+					<div ng-class="getSortClass('address.city')"></div>
+				</th>
+				<th ng-click="sortData('address.zipcode')">Address : Zip code
+					<div ng-class="getSortClass('address.zipcode')"></div>
+				</th>
+				<th ng-click="sortData('website')">Website
+					<div ng-class="getSortClass('website')"></div>
+				</th>
+				<th ng-click="sortData('company.name')">Company : Name
+					<div ng-class="getSortClass('company.name')"></div>
+				</th>
+				<th ng-click="sortData('company.catchPhrase')">Company : Catch Phrase
+					<div ng-class="getSortClass('company.catchPhrase')"></div>
+				</th>
+				<th ng-click="sortData('company.bs')">Company : BS
+					<div ng-class="getSortClass('company.bs')"></div>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr
 				ng-repeat="employee in employees | orderBy:sortColumn:reverseSort | filter:searchText">
+				<td>{{employee.id}}</td>
+				<td>{{employee.username}}</td>
 				<td>{{employee.name}}</td>
-				<td>{{employee.gender | uppercase}}</td>
-				<td>{{employee.dateOfBirth | date : "dd-MMM-yyyy"}}</td>
-				<td>{{employee.salary | currency : "Rs " : 2}}</td>
+				<td>{{employee.email | uppercase}}</td>
+				<td>{{employee.phone}}</td>
+				<td>{{employee.address.street}}</td>
+				<td>{{employee.address.suite}}</td>
+				<td>{{employee.address.city}}</td>
+				<td>{{employee.address.zipcode}}</td>
+				<td>{{employee.website}}</td>
+				<td>{{employee.company.name}}</td>
+				<td>{{employee.company.catchPhrase}}</td>
+				<td>{{employee.company.bs}}</td>
 			</tr>
 		</tbody>
 	</table>
